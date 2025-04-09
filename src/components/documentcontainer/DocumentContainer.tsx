@@ -1,10 +1,11 @@
+import {MultiForm} from '../../components'
 import './DocumentContainer.css'
 
 const DocumentContainer = () => {
   return (
     <>
-        <div>
-            document generation page
+        <div className='document-container'>
+            <MultiForm />
         </div>
     </>
   )

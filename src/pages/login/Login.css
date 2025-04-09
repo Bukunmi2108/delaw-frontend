@@ -61,12 +61,15 @@
   width: 100%;
 }
 
-.button-group button {
+.button-group .button {
   background-color: #0066de;
-  padding: 0.8rem 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 1.8rem;
   width: 100%;
   transition: 0.3s ease all;
+  display: flex;
+  place-content: center;
+  color: white;
 }
 
 .button-group button:hover {

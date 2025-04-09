@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
-import apiService from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../auth/authContext';
 
 interface LoginProps {
   windowSize: number;
@@ -10,9 +10,9 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({windowSize}) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const navigate = useNavigate()
+  const {login} = useAuth()
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault()
     if (username && password) {
       const formData = {
@@ -20,17 +20,8 @@ const Login: React.FC<LoginProps> = ({windowSize}) => {
         'password': password,
       };
 
-      apiService
-        .login(formData)
-        .then((response) => {
-          if (response && response.access_token) {
-            console.log('Login successful:', response);
-            setPassword('')
-            setUsername('')
-            navigate('/chat')
-          } else {
-            alert('Login failed');
-          }
+        await login(formData).then((response) => {
+          console.log('response', response)
         })
         .catch((error) => {
           console.error('Login error:', error);
@@ -63,8 +54,10 @@ const Login: React.FC<LoginProps> = ({windowSize}) => {
             className="input-field"
           />        
           <div className='button-group'>
-            <button type='submit'>Log in</button>
-            <button>Sign up</button>
+            <button className='button' type='submit'>Log in</button>
+            <Link className='button' to={'/register'}>
+              Sign up
+            </Link>
           </div>
         </form>
         <span className='login-footer'>CaseSimpli AI. <span>A product of CaseSimpli Legal Research Team</span></span>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import apiService from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface SignupProps {
   windowSize: number;
@@ -71,9 +71,11 @@ const Signup: React.FC<SignupProps> = ({windowSize}) => {
             onChange={(e) => setPassword(e.target.value)}
             className="input-field"
           />        
-          <div className='button-group'>
-            <button type='submit'>Sign up</button>
-            <button>Log in</button>
+         <div className='button-group'>
+            <button className='button' type='submit'>Sign up</button>
+            <Link className='button' to={'/login'}>
+              Login
+            </Link>
           </div>
         </form>
         <span className='signup-footer'>CaseSimpli AI. <span>A product of CaseSimpli Legal Research Team</span></span>

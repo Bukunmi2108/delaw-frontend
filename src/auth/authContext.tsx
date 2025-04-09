@@ -10,6 +10,7 @@ import React, {
   
   interface AuthContextType {
     isAuthenticated: boolean;
+    login: (formData: any) => Promise<void>;
     logout: () => Promise<void>;
     loading: boolean;
   }
@@ -43,7 +44,24 @@ import React, {
       checkAuth();
     }, []);
     
-  
+    const login = async (formData: any) => {
+      apiService
+        .login(formData)
+        .then((response) => {
+          if (response && response.access_token) {
+            console.log('Login successful:', response);
+            navigate('/chat')
+            setIsAuthenticated(true);
+          } else {
+            alert('Login failed');
+          }
+        })
+        .catch((error) => {
+          console.error('Login error:', error);
+          alert('Login failed. Please check your credentials.');
+        });
+    }
+
     const logout = async () => {
       try {
         await apiService.logout(); // Replace with your actual logout call
@@ -56,7 +74,7 @@ import React, {
     };
   
     return (
-      <AuthContext.Provider value={{ isAuthenticated, logout, loading }}>
+      <AuthContext.Provider value={{ isAuthenticated, login, logout, loading }}>
         {children}
       </AuthContext.Provider>
     );

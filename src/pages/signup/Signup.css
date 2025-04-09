@@ -61,7 +61,7 @@
   width: 100%;
 }
 
-.button-group button {
+.button-group .button {
   background-color: #0066de;
   padding: 0.8rem 1rem;
   border-radius: 1.8rem;

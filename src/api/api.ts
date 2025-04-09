@@ -158,6 +158,17 @@ class ApiService {
   async deleteAllChatHistory() {
     return this.delete(`/chat/history/all`);
   }
+
+  ///templates
+  // async getTemplateSchema() {
+  //   return this.get("/users/me", { headers: {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': this.token ? `Bearer ${this.token}` : '',
+  //   }});
+  // }
+  async getTemplateSchema(id: string) {
+    return this.get(`/template/${id}/schema`);
+  }
 }
 
 const apiService = new ApiService();

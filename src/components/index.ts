@@ -13,3 +13,5 @@ export { default as ChatMessageContainer } from './chatmessagecontainer/ChatMess
 export { default as Login } from './login/Login';
 
 export { default as DocumentContainer } from './documentcontainer/DocumentContainer';
+
+export { default as MultiForm } from './multiform/MultiForm';

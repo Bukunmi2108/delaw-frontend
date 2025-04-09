@@ -50,7 +50,7 @@ function App() {
             path="/document/:id"
             element={
               <ProtectedRoute>
-                <Document />
+                <Document windowSize={windowSize} />
               </ProtectedRoute>
             }
           />
@@ -58,7 +58,7 @@ function App() {
             path="/document"
             element={
               <ProtectedRoute>
-                <Document />
+                <Document windowSize={windowSize}/>
               </ProtectedRoute>
             }
           />
