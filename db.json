@@ -1,0 +1,294 @@
+{
+  "conversation": [
+    {
+      "choices": [
+        {
+          "messages": [
+            {
+              "id": "1",
+              "role": "assistant",
+              "date": "2023-10-27T10:00:00.000Z",
+              "content": "Mocked conversation response."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "809a",
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello",
+          "id": "838b015e-f9a5-4ae8-a655-41220144bca9",
+          "date": "2025-04-02T08:26:58.905Z"
+        }
+      ],
+      "conversation_id": "ee7a5ecf-d498-40be-b1be-87c19f979540"
+    },
+    {
+      "id": "f0e6",
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello",
+          "id": "5b4476f6-fbee-45b0-ad1d-31cbb47a0f4e",
+          "date": "2025-04-02T08:31:11.808Z"
+        }
+      ],
+      "conversation_id": "48c5c27d-5d67-4293-aaf6-5f1f48ecde63"
+    },
+    {
+      "id": "1caa",
+      "messages": [
+        {
+          "id": "115",
+          "role": "user",
+          "date": "2023-10-27T10:13:00.000Z",
+          "content": "How do I apply for a visa?"
+        },
+        {
+          "id": "1",
+          "role": "assistant",
+          "date": "2023-10-27T10:00:00.000Z",
+          "content": "Another example with a table:\n\n| Header 1 | Header 2 |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n| Cell 3   | Cell 4   |\n\nAnd some inline code: `const x = 10;`"
+        },
+        {
+          "role": "user",
+          "content": "Another example with a table:\n| Header 1 | Header 2 |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n| Cell 3   | Cell 4   |\nAnd some inline code: `const x = 10;`",
+          "id": "6237b7d4-5eaf-4676-a61e-ab9d77383392",
+          "date": "2025-04-02T10:07:56.608Z"
+        }
+      ],
+      "conversation_id": "7"
+    },
+    {
+      "id": "9fd1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello",
+          "id": "4bf24cd4-ae6f-4226-a567-4300a6897056",
+          "date": "2025-04-02T11:01:39.100Z"
+        }
+      ],
+      "conversation_id": "4a3352f9-03da-4824-a91d-a74aa5b92d98"
+    },
+    {
+      "id": "e6f3",
+      "messages": [
+        {
+          "id": "115",
+          "role": "user",
+          "date": "2023-10-27T10:13:00.000Z",
+          "content": "How do I apply for a visa?"
+        },
+        {
+          "id": "1",
+          "role": "assistant",
+          "date": "2023-10-27T10:00:00.000Z",
+          "content": "# Expanding on a Concept: A Deeper Dive\n\nLet's take a moment to explore a concept in greater detail. To truly understand something, we need to move beyond surface-level definitions and delve into its nuances, implications, and broader context. We'll start with a basic idea and then expand upon it, considering various perspectives and potential applications.\n\n## The Foundation: A Brief Overview\n\n[**Insert the initial concept here. For example, you could say: \"Let's consider the concept of 'sustainable development'.\"**]\n\nAt its core, [**restate the basic definition of the concept**]. However, this simple definition barely scratches the surface."
+        },
+        {
+          "role": "user",
+          "content": "helloe",
+          "id": "eb374da5-0803-40f9-9ebc-e5fc43f6a91c",
+          "date": "2025-04-02T11:05:54.320Z"
+        }
+      ],
+      "conversation_id": "7"
+    },
+    {
+      "id": "d333",
+      "messages": [
+        {
+          "id": "115",
+          "role": "user",
+          "date": "2023-10-27T10:13:00.000Z",
+          "content": "How do I apply for a visa?"
+        },
+        {
+          "id": "1",
+          "role": "assistant",
+          "date": "2023-10-27T10:00:00.000Z",
+          "content": "# Expanding on a Concept: A Deeper Dive\n\nLet's take a moment to explore a concept in greater detail. To truly understand something, we need to move beyond surface-level definitions and delve into its nuances, implications, and broader context. We'll start with a basic idea and then expand upon it, considering various perspectives and potential applications.\n\n## The Foundation: A Brief Overview\n\n[**Insert the initial concept here. For example, you could say: \"Let's consider the concept of 'sustainable development'.\"**]\n\nAt its core, [**restate the basic definition of the concept**]. However, this simple definition barely scratches the surface."
+        },
+        {
+          "role": "user",
+          "content": "helle",
+          "id": "118b0e38-8880-4db3-922b-85451ef00ec2",
+          "date": "2025-04-02T11:06:19.250Z"
+        }
+      ],
+      "conversation_id": "7"
+    },
+    {
+      "id": "fb67",
+      "messages": [
+        {
+          "role": "user",
+          "content": "helloe",
+          "id": "67a329cb-050c-4446-8219-0e4e79e20ac5",
+          "date": "2025-04-02T11:06:51.319Z"
+        }
+      ],
+      "conversation_id": "e6248357-6e3a-4434-9b6f-e23692723bc2"
+    }
+  ],
+  "assistanttype": {
+    "ai_assistant_type": "Legal Assistant"
+  },
+  ".auth_me": [
+    {
+      "access_token": "mocked_access_token",
+      "expires_on": "2024-12-31T23:59:59Z",
+      "id_token": "mocked_id_token",
+      "provider_name": "mocked_provider",
+      "user_claims": [
+        {
+          "typ": "name",
+          "val": "Mock User"
+        },
+        {
+          "typ": "email",
+          "val": "mock@example.com"
+        }
+      ],
+      "user_id": "mocked_user_id"
+    }
+  ],
+  "history": [
+    {
+      "id": "1",
+      "title": "Create a prenuptial agreement",
+      "createdAt": "2023-10-27T10:00:00.000Z",
+      "messages": [
+        {
+          "id": "456",
+          "role": "user",
+          "date": "2023-10-27T10:01:00.000Z",
+          "content": "I need a prenuptial agreement."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Draft a will",
+      "createdAt": "2023-10-27T10:02:00.000Z",
+      "messages": [
+        {
+          "id": "789",
+          "role": "user",
+          "date": "2023-10-27T10:03:00.000Z",
+          "content": "I want to draft my will."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Presidential Pardon",
+      "createdAt": "2023-10-27T10:04:00.000Z",
+      "messages": [
+        {
+          "id": "101",
+          "role": "user",
+          "date": "2023-10-27T10:05:00.000Z",
+          "content": "What is the process for a presidential pardon?"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Nigerian Constitution historical overview",
+      "createdAt": "2023-10-27T10:06:00.000Z",
+      "messages": [
+        {
+          "id": "112",
+          "role": "user",
+          "date": "2023-10-27T10:07:00.000Z",
+          "content": "Give me a historical overview of the Nigerian Constitution."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "How to get a divorce in Nigeria",
+      "createdAt": "2023-10-27T10:08:00.000Z",
+      "messages": [
+        {
+          "id": "113",
+          "role": "user",
+          "date": "2023-10-27T10:09:00.000Z",
+          "content": "How do I get a divorce in Nigeria?"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Pack a first-aid kit",
+      "createdAt": "2023-10-27T10:10:00.000Z",
+      "messages": [
+        {
+          "id": "114",
+          "role": "user",
+          "date": "2023-10-27T10:11:00.000Z",
+          "content": "What should I pack in a first-aid kit?"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Apply for a visa",
+      "createdAt": "2023-10-27T10:12:00.000Z",
+      "messages": [
+        {
+          "id": "115",
+          "role": "user",
+          "date": "2023-10-27T10:13:00.000Z",
+          "content": "How do I apply for a visa?"
+        },
+        {
+          "id": "1",
+          "role": "assistant",
+          "date": "2023-10-27T10:00:00.000Z",
+          "content": "# Expanding on a Concept: A Deeper Dive\n\nLet's take a moment to explore a concept in greater detail. To truly understand something, we need to move beyond surface-level definitions and delve into its nuances, implications, and broader context. We'll start with a basic idea and then expand upon it, considering various perspectives and potential applications.\n\n## The Foundation: A Brief Overview\n\n[**Insert the initial concept here. For example, you could say: \"Let's consider the concept of 'sustainable development'.\"**]\n\nAt its core, [**restate the basic definition of the concept**]. However, this simple definition barely scratches the surface."
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Obtain travel insurance",
+      "createdAt": "2023-10-27T10:14:00.000Z",
+      "messages": [
+        {
+          "id": "116",
+          "role": "user",
+          "date": "2023-10-27T10:15:00.000Z",
+          "content": "Where can I obtain travel insurance?"
+        },
+        {
+          "id": "116",
+          "role": "assistant",
+          "date": "2023-10-27T10:15:00.000Z",
+          "content": "Obtaining travel insurance is quite accessible, as it's offered by a variety of sources. Here's a breakdown of where you can typically find it:"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Find accommodation",
+      "createdAt": "2023-10-27T10:16:00.000Z",
+      "messages": [
+        {
+          "id": "117",
+          "role": "user",
+          "date": "2023-10-27T10:17:00.000Z",
+          "content": "How do I find accommodation?"
+        }
+      ]
+    }
+  ],
+  "frontend_settings": {
+    "CHAT_HISTORY_ENABLED": true
+  }
+}

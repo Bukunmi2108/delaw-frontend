@@ -1,0 +1,85 @@
+.auth-container {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.auth-display-container {
+  flex: 1;
+  background-color: #00002e;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.auth-form-container {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  gap: 3rem;
+  transition: all 0.5s ease;
+}
+
+.auth-display-container-none {
+  display: none;
+}
+
+.auth-form-container h2 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  width: 100%;
+  text-align: center;
+}
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form .input-field {
+  width: 100%;
+  padding: 1rem;
+  height: 3rem;
+}
+
+.auth-form .input-field::placeholder {
+  color: rgb(163, 163, 163);
+}
+.button-group {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.button-group button {
+  background-color: #0066de;
+  padding: 0.8rem 1rem;
+  border-radius: 1.8rem;
+  width: 100%;
+  transition: 0.3s ease all;
+}
+
+.button-group button:hover {
+  opacity: 0.8;
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: lighter;
+  margin-top: 4rem;
+}
+
+.login-footer span {
+  color: rgb(153, 153, 153);
+}

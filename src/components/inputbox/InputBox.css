@@ -1,0 +1,72 @@
+.input-box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem; /* Increased padding */
+  outline: 1px solid #4a5050;
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 1.5rem; /* Adjusted bottom spacing */
+  left: 0;
+  right: 0;
+  width: 90%;
+  height: fit-content;
+  margin-inline: auto;
+  max-width: 960px;
+  overflow: hidden;
+  background-color: #1e1e1e; /* Added background color */
+}
+
+.input-field {
+  display: flex;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-family: sans-serif;
+  font-size: 16px; 
+  line-height: 1.4; 
+  overflow-y: auto;
+  background-color: #1e1e1e; 
+  color: #bdc1c6;
+  border-radius: 0.5rem; 
+  resize: none;
+  overflow-y: auto;
+  height: 2rem;
+  margin: 0;
+}
+.input-field::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.input-field::placeholder {
+  color: #bdc1c6;
+}
+
+.input-widgets {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem; /* Adjusted gap */
+  margin-top: 0.1rem; /* Added margin top */
+}
+
+.input-widgets-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem; /* Adjusted gap */
+}
+
+.icon {
+  padding: 0.5rem; /* Added padding to icons */
+  cursor: pointer;
+  border-radius: 1rem; /* Added border radius to icons */
+  transition: background-color 0.2s ease; /* Added transition */
+}
+
+.icon:hover {
+  background-color: #3a3a3a; /* Added hover effect */
+}
+
+#send-btn {
+  color: #0078d4; /* Example send button color */
+}

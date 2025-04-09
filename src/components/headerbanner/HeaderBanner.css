@@ -1,0 +1,10 @@
+.header-banner {
+    font-size: 0.8rem;
+    z-index: 1000;
+    }
+
+@media screen and (max-width: 768px) {
+    .header-banner {
+        font-size: 0.7rem;
+    }  
+}
