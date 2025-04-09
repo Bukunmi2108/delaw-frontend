@@ -1,0 +1,163 @@
+.rich-text-editor-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%; 
+  }
+  
+  .menu-bar {
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin-bottom: 0.25rem;
+    background-color: #f9fafb;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.5rem;
+    z-index: 50;
+  }
+  
+  .custom-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    outline: none;
+    cursor: pointer;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    margin-bottom: 0.25rem; 
+  }
+
+  .custom-toggle:hover {
+    background-color: lightblue;
+  }
+  
+  .custom-toggle:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+  
+  .custom-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .custom-toggle[aria-pressed="true"],
+  .custom-toggle--pressed {
+    background-color: #1e3a8a;
+    color: #fff;
+  }
+  
+  .editor-content {
+    min-height: 156px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    background-color: #f9fafb;
+    padding: 0.5rem 0.75rem;
+    flex-grow: 1; 
+    width: 100%; 
+    color: #000;
+  }
+  
+  .editor-list-margin-left {
+    margin-left: 0.75rem;
+  }
+
+
+
+  /* Base styles for the Tiptap editor content */
+.tiptap.ProseMirror.editor-content {
+    -webkit-user-select: text;
+    user-select: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+    caret-color: auto;
+    min-height: 156px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    background-color: #f9fafb;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem; /* Default font size */
+    line-height: 1.5; /* Default line height */
+  }
+  
+  .tiptap.ProseMirror.editor-content:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+  
+  /* List styles */
+  .tiptap.ProseMirror.editor-content .list-disc {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+  
+  .tiptap.ProseMirror.editor-content .list-decimal {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+  }
+  
+  /* Heading styles */
+  .tiptap.ProseMirror.editor-content h1 {
+    font-size: 2rem; /* Equivalent to text-2xl or larger */
+    line-height: 1.2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .tiptap.ProseMirror.editor-content h2 {
+    font-size: 1.5rem; /* Equivalent to text-xl */
+    line-height: 1.3;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .tiptap.ProseMirror.editor-content h3 {
+    font-size: 1.25rem; /* Equivalent to text-lg */
+    line-height: 1.4;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  /* Bold style */
+  .tiptap.ProseMirror.editor-content strong {
+    font-weight: bold;
+  }
+  
+  /* Italic style */
+  .tiptap.ProseMirror.editor-content em {
+    font-style: italic;
+  }
+  
+  /* Strikethrough style */
+  .tiptap.ProseMirror.editor-content s {
+    text-decoration: line-through;
+  }
+  
+  /* Alignment styles */
+  .tiptap.ProseMirror.editor-content[style*="text-align: left"] {
+    text-align: left;
+  }
+  
+  .tiptap.ProseMirror.editor-content[style*="text-align: center"] {
+    text-align: center;
+  }
+  
+  .tiptap.ProseMirror.editor-content[style*="text-align: right"] {
+    text-align: right;
+  }
+  
+  /* Highlight style */
+  .tiptap.ProseMirror.editor-content mark {
+    background-color: yellow; /* Default highlight color - adjust */
+    padding: 0.1em 0.2em;
+  }
