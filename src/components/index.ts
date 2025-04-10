@@ -17,3 +17,7 @@ export { default as DocumentContainer } from './documentcontainer/DocumentContai
 export { default as MultiForm } from './multiform/MultiForm';
 
 export { default as Editor } from './editor/Editor';
+
+export { default as Select } from './templateselect/Select';
+
+export { default as TemplateList } from './templatelist/TemplateList';

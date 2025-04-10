@@ -1,121 +1,101 @@
-import useFormSchema from '../../hooks/useFormSchema';
-import useMultiStepForm from '../../hooks/useMultiStepForm';
-import './MultiForm.css'
+import React from 'react';
+import './MultiForm.css';
+import useMultiFormField from '../../hooks/useMultiFormField';
 
 interface FieldSchema {
-    type: string;
-    label: string;
-    description?: string;
+  type: string;
+  label: string;
+  description?: string;
 }
 
-interface BackendResponse {
-    name: string;
-    description: string;
-    category_id: string;
-    id: string;
-    created_at: string;
-    fields_schema: Record<string, FieldSchema>;
+interface MultiFormProps {
+  formInterface: Record<string, FieldSchema>;
+  formData: Record<string, any>;
+  onInputChange: (name: string, value: any) => void;
+  onSubmit: (formData: Record<string, any>) => void;
+  onGoBack: () => void;
+  currentStep: number;
+  totalSteps: number;
 }
-// Example backend response (replace with your actual data)
-const backendResponse: BackendResponse = {
-  "name": "Invoice1",
-  "description": "This is another template for an invoice",
-  "category_id": "0aa4b5a7-900e-4434-a4ae-e53d924e7caa",
-  "id": "bde254e7-2733-4281-bfdf-23aed0baa63b",
-  "created_at": "2025-04-09T13:44:58.966208",
-  "fields_schema": {
-    "notes": { "type": "string", "label": "Notes", "description": "What is this invoice about?" },
-    "currency": { "type": "string", "label": "Currency", "description": "..." },
-    "subtotal": { "type": "string", "label": "Subtotal", "description": "..." },
-    "tax_rate": { "type": "string", "label": "Tax Rate (%)", "description": "..." },
-    "your_city": { "type": "string", "label": "Your City", "description": "..." },
-    "tax_amount": { "type": "string", "label": "Tax", "description": "..." },
-    "your_state": { "type": "string", "label": "Your State", "description": "..." },
-    "client_city": { "type": "string", "label": "Client City", "description": "..." },
-    "client_name": { "type": "string", "label": "Client Name", "description": "..." },
-    "client_state": { "type": "string", "label": "Client State", "description": "..." },
-    "invoice_date": { "type": "string", "label": "Date", "description": "..." },
-    "total_amount": { "type": "string", "label": "Total", "description": "..." },
-    "your_country": { "type": "string", "label": "Your Country", "description": "..." },
-    "client_country": { "type": "string", "label": "Client Country", "description": "..." },
-    "invoice_number": { "type": "string", "label": "Invoice Number", "description": "..." },
-    "your_postal_code": { "type": "string", "label": "Your Postal Code", "description": "..." },
-    "your_company_name": { "type": "string", "label": "Your Company Name", "description": "..." },
-    "client_postal_code": { "type": "string", "label": "Client Postal Code", "description": "..." },
-    "your_address_line1": { "type": "string", "label": "Your Address Line 1", "description": "..." },
-    "your_address_line2": { "type": "string", "label": "Your Address Line 2", "description": "..." },
-    "client_address_line1": { "type": "string", "label": "Client Address Line 1", "description": "..." },
-    "client_address_line2": { "type": "string", "label": "Client Address Line 2", "description": "..." }
-  }
-};
 
-function MultiForm() {
-  const { formInterface } = useFormSchema(backendResponse.fields_schema);
+function MultiForm({
+  formInterface,
+  formData,
+  onInputChange,
+  onSubmit,
+  onGoBack,
+  currentStep,
+  totalSteps,
+}: MultiFormProps) {
+  const fields = Object.keys(formInterface);
+  const fieldsPerPage = 3;
+
   const {
-    currentStep,
-    totalSteps,
-    displayedFields,
-    formData,
-    goToNextStep,
-    goToPreviousStep,
-    handleInputChange,
-    handleSubmit,
-  } = useMultiStepForm({
-    formInterface,
-    onSubmit: (data) => {
-      console.log('Form Data to Backend:', data);
-      // Here you would typically send 'data' to your backend
-      alert('Form submitted! Check console.');
-    },
+    currentFieldIndex,
+    displayedFieldsStartIndex,
+    isFirstPage,
+    isLastPage,
+    handleNext,
+    handlePrevious,
+  } = useMultiFormField({
+    totalFields: fields.length,
+    fieldsPerPage,
+    onFormComplete: () => onSubmit(formData),
   });
 
-  const handleFinalSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSubmit();
-  };
+  const displayedFields = fields.slice(displayedFieldsStartIndex, displayedFieldsStartIndex + fieldsPerPage);
 
-  const handleNext = (e: React.FormEvent) => {
-    e.preventDefault();
-    goToNextStep();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    onInputChange(name, value);
   };
 
   return (
-    <form className='multistep-form' onSubmit={currentStep === totalSteps - 1 ? handleFinalSubmit : handleNext}>
-      <h2 className='multistep-form-title'>Invoice Form (Multi-Step)</h2>
+    <form className='multistep-form' onSubmit={(e) => e.preventDefault()}>
+      <h2 className='multistep-form-title'>Fill in the Details</h2>
       {displayedFields.map((key) => (
         <div className='input-group' key={key}>
-          <label htmlFor={key}>{backendResponse.fields_schema[key].label}</label>
+          <label htmlFor={key}>{formInterface[key].label}</label>
           <input
-            type={backendResponse.fields_schema[key].type === 'number' ? 'number' : 'text'}
+            type={formInterface[key].type === 'number' ? 'number' : 'text'}
             id={key}
             name={key}
             value={formData[key] !== undefined ? formData[key]?.toString() : ''}
-            onChange={handleInputChange}
+            onChange={handleChange}
             required
           />
-          {backendResponse.fields_schema[key].description && (
-            <small>{backendResponse.fields_schema[key].description}</small>
+          {formInterface[key].description && (
+            <small>{formInterface[key].description}</small>
           )}
         </div>
       ))}
 
       <div className='multistep-btns' style={{ marginTop: '20px' }}>
-        {currentStep > 0 && (
-          <button type="button" onClick={goToPreviousStep}>
-            Back
+        {currentStep > 1 && isFirstPage && (
+          <button type="button" onClick={onGoBack}>
+            Back to Template
           </button>
         )}
-        {currentStep < totalSteps - 1 ? (
-          <button type="submit" onClick={goToNextStep}>
+        {!isFirstPage && (
+          <button type="button" onClick={handlePrevious}>
+            Previous
+          </button>
+        )}
+        {!isLastPage && (
+          <button type="button" onClick={handleNext}>
             Next
           </button>
-        ) : (
-          <button type="submit" onClick={handleSubmit}>
-            Submit
+        )}
+        {isLastPage && (
+          <button type="button" onClick={handleNext}>
+            Continue to Editor
           </button>
         )}
       </div>
-      <p className='multistep-indicator'>Step {currentStep + 1} of {totalSteps}</p>
+      {/* <p className='multistep-indicator'>Step {currentStep + 1} of {totalSteps}</p> */}
+      <p className='field-page-indicator'>
+        Page {Math.floor(currentFieldIndex / fieldsPerPage) + 1} of {Math.ceil(fields.length / fieldsPerPage)}
+      </p>
     </form>
   );
 }

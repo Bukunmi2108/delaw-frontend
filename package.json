@@ -52,6 +52,7 @@
     "@eslint/js": "^9.21.0",
     "@types/express": "^5.0.1",
     "@types/json-server": "^0.14.7",
+    "@types/marked": "^5.0.2",
     "@types/node": "^22.13.17",
     "@types/quill": "^2.0.14",
     "@types/react": "^19.0.10",

@@ -1,5 +1,5 @@
 // api.ts
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { chatHistory, ChatMessage } from '../components/chatmessagecontainer/ChatMessageContainer';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'; // Replace with your backend URL
@@ -25,6 +25,38 @@ interface CreateChatHistoryRequest {
 
 interface UpdateChatHistoryRequest {
   messages: ChatMessage[];
+}
+
+interface Category {
+  id: string;
+  name: string;
+}
+
+interface Template {
+  id: string;
+  name: string;
+  // Add other relevant template properties as needed based on your backend response
+  description?: string;
+  imageUrl?: string;
+}
+
+interface FieldSchema {
+  type: string;
+  label: string;
+  description?: string;
+}
+
+interface BackendResponse {
+  name: string;
+  description: string;
+  category_id: string;
+  id: string;
+  created_at: string;
+  fields_schema: Record<string, FieldSchema>;
+}
+
+interface MarkdownResponse {
+  template_content: string;
 }
 
 class ApiService {
@@ -169,6 +201,66 @@ class ApiService {
   async getTemplateSchema(id: string) {
     return this.get(`/template/${id}/schema`);
   }
+
+  ///templates
+  // async getTemplateSchema() {
+  //   return this.get("/users/me", { headers: {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': this.token ? `Bearer ${this.token}` : '',
+  //   }});
+  // }
+
+  async getAllCategories(): Promise<Category[]> {
+    try {
+      const response: AxiosResponse<Category[]> = await axios.get(`${API_BASE_URL}/category/info`);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error fetching categories:', error);
+      throw error;
+    }
+  }
+
+  async getTemplatesByCategory(categoryId: string): Promise<Template[]> {
+    try {
+      const response: AxiosResponse<Template[]> = await axios.get(
+        `${API_BASE_URL}/template/${categoryId}/templates`
+      );
+      return response.data;
+    } catch (error: any) {
+      console.error(`Error fetching templates for category ${categoryId}:`, error);
+      throw error;
+    }
+  }
+
+  async getFormSchemaByTemplate(templateId: string): Promise<BackendResponse | null> {
+    try {
+      const response: AxiosResponse<BackendResponse> = await axios.get(
+        `${API_BASE_URL}/template/${templateId}/schema`
+      );
+      return response.data;
+    } catch (error: any) {
+      console.error(`Error fetching schema for template ${templateId}:`, error);
+      return null; // Or throw the error if you prefer to handle it in the component
+    }
+  }
+
+  async getMarkdownByTemplateAndData(
+    templateId: string,
+    formData: Record<string, any>
+  ): Promise<string | null> {
+    try {
+      const response: AxiosResponse<MarkdownResponse> = await axios.post(
+        `${API_BASE_URL}/template/${templateId}/markdown`,
+        formData
+      );
+      
+      return response.data?.template_content || null;
+    } catch (error: any) {
+      console.error(`Error fetching markdown for template ${templateId} with data:`, error);
+      return null; // Or throw the error
+    }
+  }
+
 }
 
 const apiService = new ApiService();
