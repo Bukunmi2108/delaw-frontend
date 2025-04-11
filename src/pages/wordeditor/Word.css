@@ -1,0 +1,112 @@
+/* Word.css */
+@import '../../../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../../../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import "../../../node_modules/@syncfusion/ej2-react-documenteditor/styles/material.css";
+
+.word-container {
+    background-color: #fafafa;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+#container {
+    flex: 1;
+    border: none !important;
+    background: #ffffff;
+    min-height: 0;
+}
+
+/* Syncfusion editor inner container fixes */
+.e-de-ctnr {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.e-de-separator {
+    flex: 1 !important;
+    min-height: 0 !important;
+}
+
+.e-de-pane {
+    flex: 1 !important;
+    overflow: auto !important;
+}
+
+/* Export styles */
+.export-wrapper {
+    position: relative;
+}
+
+.modern-export-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modern-export-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.modern-export-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px;
+    min-width: 140px;
+}
+
+.export-option {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.export-option:hover {
+    background: #f8f9fa;
+    color: #007bff;
+}
+
+.toolbar-container h2 {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0;
+}

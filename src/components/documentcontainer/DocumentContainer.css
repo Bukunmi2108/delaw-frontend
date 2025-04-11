@@ -97,12 +97,19 @@
     text-decoration: underline;
   }
 
+  .export-btn {
+    padding: .6rem;
+    margin: .2rem;
+    cursor: pointer;
+  }
+
   .multi-mini-form-container {
     width: 100%;
   }
 
   .editor-container {
     width: 100%;
+    max-height: 500px;
   }
   
   /* Adjust for smaller screens if needed */

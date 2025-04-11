@@ -1,0 +1,29 @@
+.clip-loader-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    /* You can add more styling for positioning within its parent */
+  }
+  
+  .clip-loader {
+    border-radius: 50%;
+    animation: clip-spin 1s infinite linear;
+  }
+  
+  @keyframes clip-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+  }

@@ -42,7 +42,6 @@ const Sidebar: React.FC<SidebarProps> = ({
     const NavItems: NavItem[] = [
         { icon: <CiChat1 />, title: 'Chat with DeLaw', link: '/chat' },
         { icon: <IoDocumentOutline />, title: 'Draft a legal document', link: '/document' },
-        { icon: <GoBook />, title: 'Legal Dictionary', link: '/' },
         { icon: <VscAccount />, title: 'User Account', link: '/' },
     ];
 

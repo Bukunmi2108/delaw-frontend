@@ -21,3 +21,5 @@ export { default as Editor } from './editor/Editor';
 export { default as Select } from './templateselect/Select';
 
 export { default as TemplateList } from './templatelist/TemplateList';
+
+export { default as Loader } from './loader/Loader';

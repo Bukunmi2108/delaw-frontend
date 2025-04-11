@@ -1,19 +1,24 @@
-import { Editor, MultiForm, Select, TemplateList } from '../../components';
+import { useRef } from 'react';
+import { MultiForm, Select, TemplateList, Editor as TiptapEditor } from '../../components'; // Assuming your Editor component is named 'Editor'
 import useMultiDocumentForm from '../../hooks/useMultiDocumentForm';
 import apiService from '../../api/api';
 import './DocumentContainer.css';
+import { Editor } from '@tiptap/core'; // Import the Editor type
 
 const DocumentContainerWithMultiForm = () => {
+  const editorRef = useRef<Editor | null>(null);
+
   const [state, actions] = useMultiDocumentForm({
     fetchCategories: apiService.getAllCategories,
     fetchTemplates: apiService.getTemplatesByCategory,
     fetchFormSchema: apiService.getFormSchemaByTemplate,
     fetchMarkdown: apiService.getMarkdownByTemplateAndData,
-    onFinalSubmit: (editorContent) => {
-      console.log('Final Editor Content for Export:', editorContent);
+    onFinalSubmit: (finalContent) => {
+      console.log('Final Editor Content for Export:', finalContent);
       alert('Document ready for export (check console)');
-      // Implement your export logic here
+      // Implement your final submit logic here
     },
+    editor: editorRef.current, // Pass the current ref value
   });
 
   const {
@@ -104,16 +109,22 @@ const DocumentContainerWithMultiForm = () => {
 
         {currentStep === 3 && formSchema && (
           <div className='editor-container'>
-            <h2>Edit Document</h2>
-            <Editor content={editorContent} onChange={handleEditorChange} />
+            <TiptapEditor
+              content={editorContent}
+              onChange={handleEditorChange}
+              editorRef={editorRef} // Pass the ref to the Editor component
+            />
             {loadingMarkdown && <p>Loading document content...</p>}
             {errorMarkdown && <p className="error">{errorMarkdown}</p>}
             <div className="form-actions" style={{ marginTop: '20px' }}>
-              <button type="button" onClick={goToPreviousStep}>
+              <button type="button" className='back-btn' onClick={goToPreviousStep}>
                 Back to Form
               </button>
-              <button type="button" onClick={handleDocumentExport}>
-                Export Document
+              <button type="button" className='export-btn' onClick={() => handleDocumentExport('docx')}>
+                Export as DOCX
+              </button>
+              <button type="button" className='export-btn' onClick={() => handleDocumentExport('pdf')}>
+                Export as PDF
               </button>
             </div>
           </div>

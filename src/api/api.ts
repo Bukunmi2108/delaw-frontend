@@ -202,7 +202,6 @@ class ApiService {
     return this.get(`/template/${id}/schema`);
   }
 
-  ///templates
   // async getTemplateSchema() {
   //   return this.get("/users/me", { headers: {
   //     'Content-Type': 'application/json',

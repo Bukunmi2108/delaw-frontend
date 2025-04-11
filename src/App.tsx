@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Chat, Document, Login, Signup } from './pages'; // Assuming your pages are in src/pages
+import { Chat, Document, Login, Signup, Word } from './pages'; // Assuming your pages are in src/pages
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './auth/authContext';
 import { ProtectedRoute } from './auth/protectedRoute';
@@ -64,6 +64,7 @@ function App() {
           />
           <Route path="/login" element={<Login windowSize={windowSize} />} />
           <Route path="/register" element={<Signup windowSize={windowSize} />} />
+          <Route path="/word" element={<Word />} />
         </Routes>
       </AuthProvider>
     </Router>

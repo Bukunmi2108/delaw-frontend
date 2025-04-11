@@ -1,7 +1,9 @@
-//// useMultiDocumentForm.tsx
-
 import { marked } from 'marked';
 import { useState, useEffect, useCallback } from 'react';
+import { saveAs } from 'file-saver';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 interface Category {
   id: string;
@@ -34,6 +36,7 @@ interface UseMultiDocumentFormProps {
   fetchFormSchema: (templateId: string) => Promise<BackendResponse | null>;
   fetchMarkdown: (templateId: string, formData: Record<string, any>) => Promise<string | null>;
   onFinalSubmit: (editorContent: string) => void;
+  editor: any | null;
 }
 
 interface MultiDocumentFormState {
@@ -63,7 +66,7 @@ interface MultiDocumentFormActions {
   handleFormInputChange: (name: string, value: any) => void;
   handleFormSubmit: (formData: Record<string, any>) => void;
   handleEditorChange: (content: string) => void;
-  handleDocumentExport: () => void;
+  handleDocumentExport: (format: 'docx' | 'pdf') => Promise<void>; 
 }
 
 const useMultiDocumentForm = ({
@@ -71,7 +74,7 @@ const useMultiDocumentForm = ({
   fetchTemplates,
   fetchFormSchema,
   fetchMarkdown,
-  onFinalSubmit,
+  editor,
 }: UseMultiDocumentFormProps): [MultiDocumentFormState, MultiDocumentFormActions] => {
   const [currentStep, setCurrentStep] = useState(0);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -257,9 +260,70 @@ const useMultiDocumentForm = ({
     setEditorContent(content);
   }, []);
 
-  const handleDocumentExport = useCallback(() => {
-    onFinalSubmit(editorContent);
-  }, [editorContent, onFinalSubmit]);
+  const handleDocumentExport = useCallback(async (format: 'docx' | 'pdf') => {
+    if (!editorContent) {
+      console.warn("Editor instance not available for export.");
+      return;
+    }
+
+    if (!editor) {
+      console.warn("Editor instance not available for PDF export.");
+      return;
+    }
+
+    if (format === 'docx') {
+      const doc = new Document({
+        sections: [
+          {
+            properties: {},
+            children: [
+              new Paragraph({
+                children: [
+                  new TextRun(editor.getText()), // Use the Text constructor directly
+                ],
+              }),
+            ],
+          },
+        ],
+      });
+    
+      try {
+        const buffer = await Packer.toBuffer(doc);
+        const blob = new Blob([buffer], {
+          type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        });
+        saveAs(blob, 'document.docx');
+      } catch (error) {
+        console.error('Error exporting to DOCX:', error);
+        alert('Error exporting to DOCX');
+      }
+    } else if (format === 'pdf') {
+      const editorContentElement = document.querySelector('.ProseMirror') as HTMLElement; // Adjust selector if needed
+
+      if (editorContentElement) {
+        try {
+          const canvas = await html2canvas(editorContentElement, {
+            scrollX: 0,
+            scrollY: -window.scrollY,
+          });
+          const imgData = canvas.toDataURL('image/png');
+
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          const imgProps = pdf.getImageProperties(imgData);
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+          pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+          pdf.save('document.pdf');
+        } catch (error) {
+          console.error('Error exporting to PDF:', error);
+          alert('Error exporting to PDF');
+        }
+      } else {
+        alert('Could not find editor content to export to PDF.');
+      }
+    }
+  }, [editorContent, editor]);
 
   return [
     {
